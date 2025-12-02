@@ -2,22 +2,39 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
-  background: linear-gradient(180deg, #0A1E40 0%, #0A1E40 100%);
+  background: linear-gradient(180deg, #0A1E40 0%, #081628 100%);
   color: #D4AF37;
-  padding-top: 3rem;
-  padding-bottom: 2rem;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  padding: 4rem 2rem 2rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  }
 `;
 
 const FooterTop = styled.div`
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
+  
+  @media (max-width: 968px) {
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 
 const FooterLogo = styled.a`
@@ -68,11 +85,18 @@ const FooterInfoItem = styled.a`
 `;
 
 const FooterBottom = styled.div`
-  padding-top: 2rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-top: 3rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 3rem;
+  
+  @media (max-width: 968px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
 `;
 
 const FooterColumn = styled.div`
@@ -139,12 +163,15 @@ const SocialLink = styled.a`
 `;
 
 const FooterCopyright = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
   text-align: center;
-  padding-top: 1rem;
-  margin-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.8rem;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
 `;
 
 function Footer() {

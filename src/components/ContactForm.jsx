@@ -3,27 +3,19 @@ import styled from 'styled-components';
 import { gsap } from 'gsap';
 
 const FormContainer = styled.section`
-  padding: 4rem 2rem;
-  background: #f8f9fa;
+  padding: 5rem 2rem 4rem;
+  background: linear-gradient(180deg, #f8f9fa 0%, #edf0f3 100%);
   color: #0A1E40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
     font-family: 'Bebas Neue', sans-serif;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
-  }
-
-  .form-wrapper {
-    max-width: 600px;
-    margin: 0 auto;
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    letter-spacing: 2px;
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s ease;
@@ -34,67 +26,106 @@ const FormContainer = styled.section`
     }
   }
 
+  .form-wrapper {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 2.25rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(10, 30, 64, 0.15);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease 0.15s;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+
+    &.animated {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  }
+
   form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.1rem;
   }
 
-  input, textarea {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #dde2e7;
+    border-radius: 10px;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.05);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    background-color: #ffffff;
     color: #0A1E40;
+
+    &::placeholder {
+      color: #9aa4b2;
+    }
 
     &:focus {
       outline: none;
       border-color: #D4AF37;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+      background-color: #fffdf6;
     }
   }
 
   button {
-    padding: 0.75rem;
-    background: #D4AF37;
+    padding: 0.85rem 1rem;
+    background: linear-gradient(135deg, #D4AF37, #C99E25);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 999px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
 
     &:hover {
-      background: #C99E25;
+      background: linear-gradient(135deg, #E1BF4A, #D4AF37);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: none;
     }
   }
 
   .notify {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    background: #f0f0f0;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-top: 1rem;
+    gap: 0.75rem;
+    background: #f3f4f6;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    margin-top: 1.25rem;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+
     svg {
       fill: #D4AF37;
+      flex-shrink: 0;
     }
+
     p {
       margin: 0;
       text-decoration: none;
-      user-select: none; /* Убрано выделение текста */
     }
   }
 
   @media (max-width: 768px) {
-    padding: 3rem 1rem;
+    padding: 4rem 1.25rem 3rem;
+
     .form-wrapper {
-      padding: 1.5rem;
+      padding: 1.75rem 1.5rem;
+      max-width: 100%;
     }
   }
 `;
@@ -113,11 +144,12 @@ function ContactForm() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     );
 
     if (formRef.current) {
-      observer.observe(formRef.current);
+      const elements = formRef.current.querySelectorAll('h2, .form-wrapper');
+      elements.forEach((el) => observer.observe(el));
     }
 
     return () => observer.disconnect();
@@ -142,7 +174,7 @@ function ContactForm() {
   };
 
   return (
-    <FormContainer ref={formRef}>
+    <FormContainer id="contact" ref={formRef}>
       <h2>Свяжитесь с нами</h2>
       <div className="form-wrapper">
         <form onSubmit={handleSubmit}>

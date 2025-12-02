@@ -208,7 +208,7 @@ function BlogSection() {
   ];
 
   return (
-    <BlogContainer ref={blogRef}>
+    <BlogContainer id="blog" ref={blogRef}>
       <h2>Блог экспертов в области строительства</h2>
       <div className="blog-slider-container">
         <Swiper

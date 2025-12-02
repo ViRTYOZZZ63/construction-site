@@ -114,7 +114,7 @@ function StepsSection() {
   ];
 
   return (
-    <StepsContainer ref={stepsRef}>
+    <StepsContainer id="steps" ref={stepsRef}>
       <div className="container">
         <h2>Схема работы</h2>
         <div className="steps">

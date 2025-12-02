@@ -119,7 +119,7 @@ function ServicesSection() {
   ];
 
   return (
-    <ServicesContainer ref={servicesRef}>
+    <ServicesContainer id="services" ref={servicesRef}>
       <h2>Строительные услуги</h2>
       <div className="cards">
         {services.map((service, index) => (

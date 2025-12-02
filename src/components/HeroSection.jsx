@@ -5,9 +5,9 @@ import PinterestEmbed from './PinterestEmbed';
 import { gsap } from 'gsap';
 
 const HeroContainer = styled.section`
-  background: linear-gradient(135deg, #0A1E40 0%, #1a3a6a 100%);
+  background: linear-gradient(135deg, #0A1E40 0%, #1a3a6a 50%, #0A1E40 100%);
   color: white;
-  padding: 4rem 2rem;
+  padding: 8rem 2rem 4rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -16,25 +16,45 @@ const HeroContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
 
   h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 3px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s ease;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(to right, #fff, #D4AF37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     max-width: 800px;
-    margin: 0 auto 2rem;
-    line-height: 1.6;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s ease;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
   }
 
   .animated {
@@ -43,9 +63,15 @@ const HeroContainer = styled.section`
   }
 
   @media (max-width: 768px) {
-    padding: 3rem 1rem;
+    padding: 6rem 1rem 3rem;
+    
     h1 {
       font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+    
+    p {
+      font-size: 1.1rem;
     }
   }
 `;
