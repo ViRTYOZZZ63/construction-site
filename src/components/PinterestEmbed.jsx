@@ -8,6 +8,10 @@ const PinterestCard = styled.div`
   margin: 3rem auto 0;
   padding: 1.5rem 1.5rem 2rem;
   border-radius: 28px;
+  padding-top: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
   background: radial-gradient(circle at 0% 0%, rgba(255,255,255,0.08) 0%, transparent 60%),
               radial-gradient(circle at 100% 100%, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.8) 55%);
   box-shadow: 0 18px 45px rgba(0,0,0,0.5);
@@ -23,7 +27,8 @@ const PinterestCard = styled.div`
 const PhoneContainer = styled.div`
   position: relative;
   width: 100%;
-  max-width: 360px;
+  max-width: 420px;
+  height: 720px;
   margin: 0 auto;
   perspective: 1000px;
   transform-style: preserve-3d;
@@ -175,9 +180,6 @@ function PinterestEmbed() {
                 title="Pinterest Embed"
                 loading="lazy"
               />
-              <LoadingPlaceholder>
-                Загрузка Pinterest...
-              </LoadingPlaceholder>
             </VideoContainer>
           </Screen>
         </iPhone>
